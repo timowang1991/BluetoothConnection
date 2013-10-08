@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="84I-z4-sEj"/>
+                        <viewControllerLayoutGuide type="bottom" id="8qx-rp-kAl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfu-em-f6R">
+                                <rect key="frame" x="110" y="55" width="100" height="30"/>
+                                <state key="normal" title="Start scanning">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanButton:" destination="2" eventType="touchUpInside" id="ggi-as-Afe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Peripherals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGk-GL-j3Z">
+                                <rect key="frame" x="117" y="155" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RSSI" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIG-EK-RXq">
+                                <rect key="frame" x="141" y="217" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="service UUID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4s-Oh-Vb9">
+                                <rect key="frame" x="110" y="263" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="connected or not" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12c-7t-F8K">
+                                <rect key="frame" x="94" y="335" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Characteristic value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4H-1o-tCw">
+                                <rect key="frame" x="84" y="405" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aGk-GL-j3Z" firstAttribute="top" secondItem="3" secondAttribute="top" constant="155" id="6jR-oo-NVF"/>
+                            <constraint firstAttribute="bottom" secondItem="12c-7t-F8K" secondAttribute="bottom" constant="212" id="8zc-ym-4e0"/>
+                            <constraint firstItem="J4s-Oh-Vb9" firstAttribute="centerX" secondItem="lIG-EK-RXq" secondAttribute="centerX" id="FVZ-7X-kHp"/>
+                            <constraint firstAttribute="bottom" secondItem="F4H-1o-tCw" secondAttribute="bottom" constant="142" id="Ncf-M8-chd"/>
+                            <constraint firstItem="F4H-1o-tCw" firstAttribute="centerX" secondItem="12c-7t-F8K" secondAttribute="centerX" id="Ox5-wR-W1z"/>
+                            <constraint firstItem="J4s-Oh-Vb9" firstAttribute="top" secondItem="3" secondAttribute="top" constant="263" id="PCM-a4-6jw"/>
+                            <constraint firstItem="Zfu-em-f6R" firstAttribute="top" secondItem="3" secondAttribute="top" constant="55" id="Y9D-y8-let"/>
+                            <constraint firstItem="lIG-EK-RXq" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" id="d3S-4S-vJC"/>
+                            <constraint firstItem="lIG-EK-RXq" firstAttribute="centerX" secondItem="aGk-GL-j3Z" secondAttribute="centerX" id="hcd-Cp-qt2"/>
+                            <constraint firstItem="aGk-GL-j3Z" firstAttribute="centerX" secondItem="Zfu-em-f6R" secondAttribute="centerX" id="jbQ-sN-w30"/>
+                            <constraint firstItem="lIG-EK-RXq" firstAttribute="centerX" secondItem="12c-7t-F8K" secondAttribute="centerX" id="ufy-a0-PnI"/>
+                            <constraint firstItem="lIG-EK-RXq" firstAttribute="top" secondItem="3" secondAttribute="top" constant="217" id="x15-7B-rsR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ExM-mP-ngD"/>
+                    <connections>
+                        <outlet property="characteristicValue" destination="F4H-1o-tCw" id="c6H-0f-plE"/>
+                        <outlet property="connectedOrNot" destination="12c-7t-F8K" id="FON-QZ-9rh"/>
+                        <outlet property="peripheralName" destination="aGk-GL-j3Z" id="8aB-wR-qkZ"/>
+                        <outlet property="rssi" destination="lIG-EK-RXq" id="Cnn-ez-DZr"/>
+                        <outlet property="serviceUUID" destination="J4s-Oh-Vb9" id="b6R-qN-ffo"/>
+                        <outlet property="startScanning" destination="Zfu-em-f6R" id="cXg-GT-cZh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
