@@ -8,10 +8,10 @@
 
 #import "ViewController.h"
 #import <math.h>
-#define sensorTag [CBUUID UUIDWithString:@"f000aa00-0451-4000 b000-000000000000"]
-#define IR_Temp_Service [CBUUID UUIDWithString:@"f000aa00-0451-4000 b000-000000000000"]
-#define IR_Temp_Char [CBUUID UUIDWithString:@"f000aa01-0451-4000 b000-000000000000"]
-#define IR_Temp_Config [CBUUID UUIDWithString:@"f000aa02-0451-4000 b000-000000000000"]
+#define sensorTag [CBUUID UUIDWithString:@"f000aa00-0451-4000-b000-000000000000"]
+#define IR_Temp_Service [CBUUID UUIDWithString:@"f000aa00-0451-4000-b000-000000000000"]
+#define IR_Temp_Char [CBUUID UUIDWithString:@"f000aa01-0451-4000-b000-000000000000"]
+#define IR_Temp_Config [CBUUID UUIDWithString:@"f000aa02-0451-4000-b000-000000000000"]
 
 @interface ViewController () <CBCentralManagerDelegate, CBPeripheralManagerDelegate>
 
@@ -65,22 +65,28 @@
     if(![self.nPeripherals containsObject:peripheral]){
         [self.nPeripherals addObject:peripheral];
         NSLog(@"Discovered potential peripheral %@", peripheral);
+        peripheralName.text = peripheral.name;
+        rssi.text = [NSString stringWithFormat:@"%@",RSSI];
+        connectedOrNot.text = [NSString stringWithFormat:peripheral.isConnected ? @"connected":@"not connected"];
         [self.centralManager connectPeripheral:peripheral options:nil];
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     NSLog(@"Failed to connect peripheral %@ (%@)", peripheral, error);
+    connectedOrNot.text = [NSString stringWithFormat:peripheral.isConnected ? @"connected":@"not connected"];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error{
     NSLog(@"Disconnected peripheral %@ (%@)",peripheral, error);
+    connectedOrNot.text = [NSString stringWithFormat:peripheral.isConnected ? @"connected":@"not connected"];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
     //Discover service
     peripheral.delegate = self;
     [peripheral discoverServices:nil];
+    connectedOrNot.text = [NSString stringWithFormat:peripheral.isConnected ? @"connected":@"not connected"];
     NSLog(@"didConnectPeripheral");
 }
 
@@ -140,8 +146,14 @@
     //Received updated data
     float tObj = [sensorTMP006 calcTObj:characteristic.value];
     NSLog(@"Received updated data from peripheral");
+    connectedOrNot.text = [NSString stringWithFormat:peripheral.isConnected ? @"connected":@"not connected"];
+    characteristicValue.text = [NSString stringWithFormat:@"%f",tObj];
 }
 
+- (IBAction)scanButton:(id)sender {
+    self.centralManager=[[CBCentralManager alloc]initWithDelegate:self queue:nil];
+    self.nPeripherals = [NSMutableArray new];
+}
 @end
 
 @implementation sensorTMP006

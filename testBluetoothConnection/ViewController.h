@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *characteristicValue;
 
 - (IBAction)scanButton:(id)sender;
+
 @end
 
 @interface sensorTMP006 : NSObject
