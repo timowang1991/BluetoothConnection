@@ -105,7 +105,6 @@
             }
             //[peripheral discoverCharacteristics:nil forService:service];
         }
-        return;
     }
     
     [self.centralManager cancelPeripheralConnection:peripheral];
@@ -135,8 +134,6 @@
             }
            
         }
-        return;
-    
     }
     NSLog(@"Disconnected at didDiscoverCharacteristicsForService");
     [self.centralManager cancelPeripheralConnection:peripheral];
