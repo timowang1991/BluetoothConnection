@@ -100,10 +100,12 @@
             if([service.UUID isEqual:sensorTag]){
                 NSLog(@"service.UUID isEqual to IR_Temp_Service");
                 //Discover the characteristic
-                [peripheral discoverCharacteristics:@[IR_Temp_Char] forService:service];
+                [peripheral discoverCharacteristics:nil forService:service];
                 return;
             }
+            //[peripheral discoverCharacteristics:nil forService:service];
         }
+        return;
     }
     
     [self.centralManager cancelPeripheralConnection:peripheral];
@@ -118,17 +120,25 @@
                 [peripheral setNotifyValue:YES forCharacteristic:characteristic];
                 [self.centralManager stopScan];
                 NSLog(@"characteristic.UUID isEqual to IR_Temp_Char");
+                NSLog(@"service.UUID is %@",service.UUID);
+                NSLog(@"Charateristic List %@", characteristic.UUID);
             }
             
             //turn on the IR sensor
             if ([characteristic.UUID isEqual:IR_Temp_Config]) {
+                NSLog(@"charateristic.UUID isEqual to IR Temp_Config");
+                NSLog(@"service.UUID is %@",service.UUID);
+                NSLog(@"IR_Temp_Config charateristic.UUID is %@",characteristic.UUID);
                 uint8_t data = 0x01;
                 [peripheral writeValue:[NSData dataWithBytes:&data length:1] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
                 return;
             }
+           
         }
-    }
+        return;
     
+    }
+    NSLog(@"Disconnected at didDiscoverCharacteristicsForService");
     [self.centralManager cancelPeripheralConnection:peripheral];
 }
 
